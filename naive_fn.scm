@@ -16,7 +16,7 @@
 
 ;; this program computes follwing function
 
-;; f(n) = 3 for n< 3 and f(n) = f(n - 1) + 2f(n - 2) + 3f(n - 3) iteratively
+;; f(n) = n for n< 3 and f(n) = f(n - 1) + 2f(n - 2) + 3f(n - 3) iteratively
 ;; naive version. untested code. TODO: write test code.
 
 (define (f n)
