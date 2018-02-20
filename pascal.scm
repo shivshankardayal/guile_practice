@@ -3,8 +3,8 @@
 
 ;; -*- mode: snippet -*-
 ;; name: fn.scm
-;; key: 
-;; binding: 
+;; key:
+;; binding:
 ;; expand-env: ((some-var some-value))
 ;; --
 
@@ -21,29 +21,22 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;; This program computes following function
+;; This program implements Pascal's triangle.
+;; Learn formatting to print it nicely. We use binomial
+;; coefficients property to print these
 
-;; f(n) = n for n< 3 and f(n) = f(n - 1) + 2f(n - 2) + 3f(n - 3) iteratively
 
-;; start1 holds f(n - 1), start2 holds f(n - 2) and start3 holds f(n - 3)
-;; TODO: improve it for arbitrary no. of functions on RHS of function.
-;; Exercise: 1.11
+(use-modules (ice-9 format))
 
-(use-modules (ice-9 pretty-print))
+(define (print-pascal n)
+  (display "Printing Pascal's triangle")(newline)
 
-(define (f-iter start1 start2 start3 count)
-  (pretty-print start1)
-  (if (< count 3)
-      start1
-      (f-iter (+ start1 (* 2 start2) (* 3 start3)) start1 start2 (- count 1))))
-
-(define (f n)
-  (if (< n 3)
-      n
-      (f-iter 2 1 0 n))
   )
 
-(display (f 4))
-(newline)
-(display (f 5))
-(newline)
+(define (pascal n)
+  (cond ((< n 1) (display "Please enter a positive number.") (newline))
+        ((> n 0)(print-pascal n))))
+
+(pascal 1)
+(pascal 2)
+(pascal -5)
