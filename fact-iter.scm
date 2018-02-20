@@ -21,14 +21,18 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-;; This program implements naive Factorial version. TODO: Else of outer if is
-;; not written, fix it.
+;; This program implements iterative Factorial version. Copied from SICP
+;; book.
+
+(define (fact-iter product counter max-count)
+  (if (> counter max-count)
+      product
+      (fact-iter (* counter product)
+                 (+ counter 1)
+                 max-count)))
 
 (define (fact n)
-  (if (< n 0)(display "Please enter positive number")
-  (if (= n 0)
-      1
-      (* n (fact (- n 1))))))
+  (fact-iter 1 1 n))
 
 (display (fact 1))
 (newline)
